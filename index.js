@@ -7,10 +7,12 @@ const priority = document.getElementById("priority");
 const calendar = document.getElementById("calendar");
 const register = document.getElementById("register");
 const table = document.getElementById("table"); 
+const tr = document.getElementById("tr");
 
 // 登録ボタンがクリックされた時に発動する関数
 register.addEventListener("click",function (event){
     event.preventDefault();
+    addTr();
     addText();
     addPriority();
     addDate();
@@ -19,11 +21,17 @@ register.addEventListener("click",function (event){
 // Enterが押された時に発動する関数
 form1.addEventListener("submit",function(event){
     event.preventDefault();
+    addTr();
     addText();
     addPriority();
     addDate();
     addCheck();
 });
+
+function addTr(){
+    const trs = document.createElement("tr");
+    table.appendChild(trs);
+}
 
 // inputタグに書かれているテキストを加えるというコールバック関数
 function addText(){
@@ -61,6 +69,7 @@ function addDate(){
     }
 }
 
+// チェックボックスを加えるというコールバック関数
 function addCheck(){
     const th4 = document.createElement("th");
     table.appendChild(th4);

@@ -17,6 +17,7 @@ register.addEventListener("click",function (event){
     addPriority();
     addDate();
     addCheck();
+    save();
 });
 // Enterが押された時に発動する関数
 form1.addEventListener("submit",function(event){
@@ -26,11 +27,14 @@ form1.addEventListener("submit",function(event){
     addPriority();
     addDate();
     addCheck();
+    save();
+
 });
 
 function addTr(){
     const trs = document.createElement("tr");
     table.appendChild(trs);
+    trs.classList.add("tr");
 }
 
 // inputタグに書かれているテキストを加えるというコールバック関数
@@ -51,7 +55,7 @@ function addPriority(){
     if(pri){
         const th2 = document.createElement("th");
         th2.innerText = pri;
-        th2.classList.add("prioritise");
+        th2.classList.add("toDoList");
         table.appendChild(th2);
         priority.value = "high"
     }
@@ -63,7 +67,7 @@ function addDate(){
     if(date){
         const th3 = document.createElement("th");
         th3.innerText = date;
-        th3.classList.add("limit");
+        th3.classList.add("toDoList");
         table.appendChild(th3);
         calendar.value = ""
     }
@@ -81,3 +85,14 @@ function addCheck(){
 
 
 
+function save(){
+    const lists = document.querySelectorAll("toDoList");
+    let todolist = [];
+    lists.forEach(list =>{
+        let todo = {
+            text:list
+        };
+        todolist.push(todo);
+    });
+    localStorage.setItem("todolist",JSON.stringify(todolist));
+}

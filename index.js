@@ -14,6 +14,7 @@ register.addEventListener("click",function (event){
     addText();
     addPriority();
     addDate();
+    addCheck();
 });
 // Enterが押された時に発動する関数
 form1.addEventListener("submit",function(event){
@@ -21,6 +22,7 @@ form1.addEventListener("submit",function(event){
     addText();
     addPriority();
     addDate();
+    addCheck();
 });
 
 // inputタグに書かれているテキストを加えるというコールバック関数
@@ -59,6 +61,14 @@ function addDate(){
     }
 }
 
+function addCheck(){
+    const th4 = document.createElement("th");
+    table.appendChild(th4);
+    if(th4){
+        let checkBox = th4.appendChild(document.createElement("input"));
+        checkBox.setAttribute("type","checkbox");
+    }
+}
 
 
 

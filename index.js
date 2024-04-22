@@ -13,12 +13,14 @@ register.addEventListener("click",function (event){
     event.preventDefault();
     addText();
     addPriority();
+    addDate();
 });
 // Enterが押された時に発動する関数
 form1.addEventListener("submit",function(event){
     event.preventDefault();
     addText();
     addPriority();
+    addDate();
 });
 
 // inputタグに書かれているテキストを加えるというコールバック関数
@@ -42,6 +44,18 @@ function addPriority(){
         th2.classList.add("prioritise");
         table.appendChild(th2);
         priority.value = "high"
+    }
+}
+
+// 選択されている日付を加えるというコールバック関数
+function addDate(){
+    let date = calendar.value;
+    if(date){
+        const th3 = document.createElement("th");
+        th3.innerText = date;
+        th3.classList.add("limit");
+        table.appendChild(th3);
+        calendar.value = ""
     }
 }
 

@@ -33,8 +33,9 @@ function addText(){
     }
 }
 
+// 選択されている優先順位を加えるというコールバック関数
 function addPriority(){
-    let pri = priority.value;
+    let pri = priority.options[priority.selectedIndex].textContent;
     if(pri){
         const th2 = document.createElement("th");
         th2.innerText = pri;

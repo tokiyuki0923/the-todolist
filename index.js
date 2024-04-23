@@ -16,6 +16,8 @@ register.addEventListener("click",function(event){
     addObj();
 })
 
+
+
 form1.addEventListener("submit",function(event){
     event.preventDefault();
     addObj();
@@ -29,36 +31,23 @@ function addObj(){
     task.limit = calendar.value;
     task.check = false;
     const trs = document.createElement("tr");
-    input.value = "";
-    priority.value = "high";
-    calendar.value = "";
     table.append(trs);
     for (const key in task) {
         const td = document.createElement("td");
         if (key == "done") { 
             const checkbox = document.createElement("input");
             checkbox.setAttribute("type","checkbox");
-            checkbox.checked = task[key];
             td.appendChild(checkbox); 
             } else {
             td.textContent = task[key];
             }
         trs.appendChild(td);
         }
+    input.value = "";
+    priority.value = "high";
+    calendar.value = "";
 }
 
-
-
-
-
-function addCheck(){
-    const td4 = document.createElement("td");
-    aaa.appendChild(td4);
-    if(td4){
-        let checkBox = td4.appendChild(document.createElement("input"));
-        checkBox.setAttribute("type","checkbox");
-    }
-}
 
 
 

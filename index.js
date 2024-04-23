@@ -18,6 +18,12 @@ if(todos){
 }
 
 
+
+
+
+
+
+
 register.addEventListener("click",function(event){
     event.preventDefault();
     addObj();
@@ -32,28 +38,41 @@ form1.addEventListener("submit",function(event){
 })
 
 
-function addObj(){
-    const task = {};
-    task.input = input.value;
-    task.priority = priority.options[priority.selectedIndex].textContent;
-    task.limit = calendar.value;
-    task.check = false;
-    const trs = document.createElement("tr");
-    table.append(trs);
-    for (const key in task) {
-        const td = document.createElement("td");
-        if (key == "check") { 
-            const checkbox = document.createElement("input");
-            checkbox.setAttribute("type","checkbox");
-            td.appendChild(checkbox); 
-            } else {
-            td.textContent = task[key];
+function addObj(todo){
+
+    let todoText = input.value;
+
+    if(todo){
+        todoText = todo.text
+    }
+
+
+
+
+    if(todoText){
+        const task = {};
+        task.input = input.value;
+        task.priority = priority.options[priority.selectedIndex].textContent;
+        task.limit = calendar.value;
+        task.check = false;
+        const trs = document.createElement("tr");
+        table.append(trs);
+        for (const key in task) {
+            const td = document.createElement("td");
+            if (key == "check") { 
+                const checkbox = document.createElement("input");
+                checkbox.setAttribute("type","checkbox");
+                td.appendChild(checkbox); 
+                } else {
+                td.textContent = task[key];
+                }
+            trs.appendChild(td);
             }
-        trs.appendChild(td);
+        input.value = "";
+        priority.value = "high";
+        calendar.value = "";
         }
-    input.value = "";
-    priority.value = "high";
-    calendar.value = "";
+    
 }
 
 

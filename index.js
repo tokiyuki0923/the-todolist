@@ -11,7 +11,49 @@ const tr = document.getElementById("tr");
 const trs = document.createElement("tr");
 const aaa = document.getElementById("aaa")
 
-// 登録ボタンがクリックされた時に発動する関数
+register.addEventListener("click",function(event){
+    event.preventDefault();
+    const task = {};
+    task.input = input.value;
+    task.priority = priority.value;
+    task.limit = calendar.value;
+})
+
+form1.addEventListener("submit",function(event){
+    event.preventDefault();
+    const task = {};
+    task.input = input.value;
+    task.priority = priority.value;
+    task.limit = calendar.value;
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* // 登録ボタンがクリックされた時に発動する関数
 register.addEventListener("click",function (event){
     event.preventDefault();
     addText();
@@ -31,8 +73,8 @@ form1.addEventListener("submit",function(event){
     addTr();
     save();
 
-});
-
+}); */
+/* 
 function addTr(){
     const trs = document.createElement("tr");
     table.appendChild(trs);
@@ -97,4 +139,4 @@ function save(){
         todolist.push(todo);
     });
     localStorage.setItem("todolist",JSON.stringify(todolist));
-}
+} */

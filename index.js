@@ -47,32 +47,27 @@ function addObj(todo){
     }
 
 
-
-
-    if(todoText){
-        const task = {};
-        task.input = input.value;
-        task.priority = priority.options[priority.selectedIndex].textContent;
-        task.limit = calendar.value;
-        task.check = false;
-        const trs = document.createElement("tr");
-        table.append(trs);
-        for (const key in task) {
-            const td = document.createElement("td");
-            if (key == "check") { 
-                const checkbox = document.createElement("input");
-                checkbox.setAttribute("type","checkbox");
-                td.appendChild(checkbox); 
-                } else {
-                td.textContent = task[key];
-                }
-            trs.appendChild(td);
+    const task = {};
+    task.input = input.value;
+    task.priority = priority.options[priority.selectedIndex].textContent;
+    task.limit = calendar.value;
+    task.check = false;
+    const trs = document.createElement("tr");
+    table.append(trs);
+    for (const key in task) {
+        const td = document.createElement("td");
+        if (key == "check") { 
+            const checkbox = document.createElement("input");
+            checkbox.setAttribute("type","checkbox");
+            td.appendChild(checkbox); 
+            } else {
+            td.textContent = task[key];
             }
-        input.value = "";
-        priority.value = "high";
-        calendar.value = "";
+        trs.appendChild(td);
         }
-    
+    input.value = "";
+    priority.value = "high";
+    calendar.value = "";
 }
 
 

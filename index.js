@@ -9,6 +9,13 @@ const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
 
+const todos = JSON.parse(localStorage.getItem("storage"));
+
+if(todos){
+    todos.forEach(todo => {
+        addObj(todo);
+    })
+}
 
 
 register.addEventListener("click",function(event){

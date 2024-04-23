@@ -34,7 +34,7 @@ function addObj(){
     table.append(trs);
     for (const key in task) {
         const td = document.createElement("td");
-        if (key == "done") { 
+        if (key == "check") { 
             const checkbox = document.createElement("input");
             checkbox.setAttribute("type","checkbox");
             td.appendChild(checkbox); 

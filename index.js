@@ -14,13 +14,14 @@ const tr = document.getElementById("tr");
 register.addEventListener("click",function(event){
     event.preventDefault();
     addObj();
+    save();
 })
-
 
 
 form1.addEventListener("submit",function(event){
     event.preventDefault();
     addObj();
+    save();
 })
 
 
@@ -47,6 +48,22 @@ function addObj(){
     priority.value = "high";
     calendar.value = "";
 }
+
+
+
+function save(){
+    const lists = document.querySelectorAll("td");
+    let storage = [];
+    lists.forEach(list => {
+        let todo = {
+            text:list.innerText,
+        }
+        storage.push(todo);
+    });
+    localStorage.setItem("storage",JSON.stringify(storage));
+}
+
+
 
 
 

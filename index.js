@@ -11,21 +11,34 @@ const tr = document.getElementById("tr");
 const trs = document.createElement("tr");
 const aaa = document.getElementById("aaa")
 
+
+
+
+
 register.addEventListener("click",function(event){
     event.preventDefault();
     const task = {};
-    task.input = input.value;
+    /* task.input = input.value;
     task.priority = priority.value;
-    task.limit = calendar.value;
+    task.limit = calendar.value; */
 })
 
 form1.addEventListener("submit",function(event){
     event.preventDefault();
     const task = {};
     task.input = input.value;
-    task.priority = priority.value;
+    task.priority = priority.options[priority.selectedIndex].textContent;
     task.limit = calendar.value;
+    Object.keys(task).forEach(key =>{
+        const value = task[key];
+        console.log(task);
+    });
 })
+
+
+
+
+
 
 
 

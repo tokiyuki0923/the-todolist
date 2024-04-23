@@ -63,6 +63,8 @@ th{
 
 td{
     border: solid 1px #777;
+    margin: auto;
+    text-align: center;
 }
 .head{
     background-color: rgb(243, 243, 152);

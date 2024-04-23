@@ -8,8 +8,7 @@ const calendar = document.getElementById("calendar");
 const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
-const aaa = document.getElementById("aaa")
-const tbody = document.getElementsByTagName("tbody")
+let checkBox;
 
 
 
@@ -21,7 +20,7 @@ register.addEventListener("click",function(event){
 
 form1.addEventListener("submit",function(event){
     event.preventDefault();
-    addObj();
+    addObj(task);
 })
 
 
@@ -30,17 +29,30 @@ function addObj(){
     task.input = input.value;
     task.priority = priority.options[priority.selectedIndex].textContent;
     task.limit = calendar.value;
+    task.check = checkBox;
+
     const trs = document.createElement("tr");
     table.append(trs);
     for (const key in task) {
         const td = document.createElement("td");
-        td.textContent = task[key];
+        if (key === check) { 
+            check = document.createElement("input");
+            check.setAttribute("type","check");
+            td.appendChild(check); 
+            } else {
+            td.textContent = task[key];
+            }
         trs.appendChild(td);
         }
     input.value = "";
     priority.value = "high";
     calendar.value = "";
 }
+
+
+
+
+
 
 
 function addCheck(){

@@ -9,34 +9,35 @@ const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
 const trs = document.createElement("tr");
+const aaa = document.getElementById("aaa")
 
 // 登録ボタンがクリックされた時に発動する関数
 register.addEventListener("click",function (event){
     event.preventDefault();
-    // addTr();
     addText();
     addPriority();
     addDate();
     addCheck();
+    addTr();
     save();
 });
 // Enterが押された時に発動する関数
 form1.addEventListener("submit",function(event){
     event.preventDefault();
-    // addTr();
     addText();
     addPriority();
     addDate();
     addCheck();
+    addTr();
     save();
 
 });
 
-/* function addTr(){
+function addTr(){
     const trs = document.createElement("tr");
     table.appendChild(trs);
-    trs.classList.add("tr");
-} */
+    trs.classList.add(aaa);
+}
 
 // inputタグに書かれているテキストを加えるというコールバック関数
 function addText(){
@@ -45,8 +46,7 @@ function addText(){
         const td1 = document.createElement("td");
         td1.innerText = text;
         td1.classList.add("toDoList");
-        table.appendChild(trs);
-        trs.appendChild(td1);
+        aaa.appendChild(td1);
         input.value = "";
     }
 }
@@ -58,7 +58,7 @@ function addPriority(){
         const td2 = document.createElement("td");
         td2.innerText = pri;
         td2.classList.add("toDoList");
-        trs.appendChild(td2);
+        aaa.appendChild(td2);
         priority.value = "high"
     }
 }
@@ -70,7 +70,7 @@ function addDate(){
         const td3 = document.createElement("td");
         td3.innerText = date;
         td3.classList.add("toDoList");
-        trs.appendChild(td3);
+        aaa.appendChild(td3);
         calendar.value = ""
     }
 }
@@ -78,7 +78,7 @@ function addDate(){
 // チェックボックスを加えるというコールバック関数
 function addCheck(){
     const td4 = document.createElement("td");
-    trs.appendChild(td4);
+    aaa.appendChild(td4);
     if(td4){
         let checkBox = td4.appendChild(document.createElement("input"));
         checkBox.setAttribute("type","checkbox");

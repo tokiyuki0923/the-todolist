@@ -8,11 +8,12 @@ const calendar = document.getElementById("calendar");
 const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
+const trs = document.createElement("tr");
 
 // 登録ボタンがクリックされた時に発動する関数
 register.addEventListener("click",function (event){
     event.preventDefault();
-    addTr();
+    // addTr();
     addText();
     addPriority();
     addDate();
@@ -22,7 +23,7 @@ register.addEventListener("click",function (event){
 // Enterが押された時に発動する関数
 form1.addEventListener("submit",function(event){
     event.preventDefault();
-    addTr();
+    // addTr();
     addText();
     addPriority();
     addDate();
@@ -31,20 +32,21 @@ form1.addEventListener("submit",function(event){
 
 });
 
-function addTr(){
+/* function addTr(){
     const trs = document.createElement("tr");
     table.appendChild(trs);
     trs.classList.add("tr");
-}
+} */
 
 // inputタグに書かれているテキストを加えるというコールバック関数
 function addText(){
     let text = input.value;
     if(text){
-        const th1 = document.createElement("th");
-        th1.innerText = text;
-        th1.classList.add("toDoList");
-        table.appendChild(th1);
+        const td1 = document.createElement("td");
+        td1.innerText = text;
+        td1.classList.add("toDoList");
+        table.appendChild(trs);
+        trs.appendChild(td1);
         input.value = "";
     }
 }
@@ -53,10 +55,10 @@ function addText(){
 function addPriority(){
     let pri = priority.options[priority.selectedIndex].textContent;
     if(pri){
-        const th2 = document.createElement("th");
-        th2.innerText = pri;
-        th2.classList.add("toDoList");
-        table.appendChild(th2);
+        const td2 = document.createElement("td");
+        td2.innerText = pri;
+        td2.classList.add("toDoList");
+        trs.appendChild(td2);
         priority.value = "high"
     }
 }
@@ -65,20 +67,20 @@ function addPriority(){
 function addDate(){
     let date = calendar.value;
     if(date){
-        const th3 = document.createElement("th");
-        th3.innerText = date;
-        th3.classList.add("toDoList");
-        table.appendChild(th3);
+        const td3 = document.createElement("td");
+        td3.innerText = date;
+        td3.classList.add("toDoList");
+        trs.appendChild(td3);
         calendar.value = ""
     }
 }
 
 // チェックボックスを加えるというコールバック関数
 function addCheck(){
-    const th4 = document.createElement("th");
-    table.appendChild(th4);
-    if(th4){
-        let checkBox = th4.appendChild(document.createElement("input"));
+    const td4 = document.createElement("td");
+    trs.appendChild(td4);
+    if(td4){
+        let checkBox = td4.appendChild(document.createElement("input"));
         checkBox.setAttribute("type","checkbox");
     }
 }

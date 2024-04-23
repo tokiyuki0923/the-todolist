@@ -61,6 +61,9 @@ th{
     border: solid 1px #777;
 }
 
+td{
+    border: solid 1px #777;
+}
 .head{
     background-color: rgb(243, 243, 152);
 }

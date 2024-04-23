@@ -9,14 +9,14 @@ const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
 
-const todos = JSON.parse(localStorage.getItem("storage"));
 
-if(todos){
-    todos.forEach(todo => {
-        addObj(todo);
-    })
-}
-
+// ドキュメントが読み込まれるたびに起こる関数。ローカルストレージに何も存在しなかったら何も返さないで次に行く
+document.addEventListener("DOMContentLoaded",function () {
+    const todos = JSON.parse(localStorage.getItem("storage"));
+    if(todos == undefined){
+        return;
+    }
+})
 
 
 

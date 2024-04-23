@@ -38,22 +38,14 @@ form1.addEventListener("submit",function(event){
 })
 
 
-function addObj(todo){
-
-    let todoText = input.value;
-
-    if(todo){
-        todoText = todo.text
-    }
-
-
+function addObj(){
     const task = {};
     task.input = input.value;
     task.priority = priority.options[priority.selectedIndex].textContent;
     task.limit = calendar.value;
     task.check = false;
     const trs = document.createElement("tr");
-    table.append(trs);
+    table.appendChild(trs);
     for (const key in task) {
         const td = document.createElement("td");
         if (key == "check") { 

@@ -36,6 +36,7 @@ form1.addEventListener("submit",function(event){
 
 function addObj(){
     const task = {};
+    task.classList.add("object");
     task.input = input.value;
     task.priority = priority.options[priority.selectedIndex].textContent;
     task.limit = calendar.value;

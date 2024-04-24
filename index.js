@@ -11,18 +11,6 @@ const tr = document.getElementById("tr");
 
 
 // ドキュメントが読み込まれるたびに起こる関数。ローカルストレージに何も存在しなかったら何も返さないで次に行く→これいるか？
-document.addEventListener('DOMContentLoaded', () => {
-    const json = storage.todo;
-if (!json) {
-  return;
-}
-
-const todos = JSON.parse(json);
-let list = []; 
-todos.forEach(todo => {
-    addObj(todo);
-});
-});
 
 
 

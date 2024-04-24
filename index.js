@@ -12,7 +12,15 @@ const tr = document.getElementById("tr");
 let storage = [];
 
 
-// ドキュメントが読み込まれるたびに起こる関数。ローカルストレージに何も存在しなかったら何も返さないで次に行く→これいるか？
+document.addEventListener('DOMContentLoaded', () => {
+    const getList = JSON.parse(localStorage.getItem("storage"));
+    if (getList) {
+        getList.forEach(todo => {
+            addObj(todo);
+        });
+    }
+});
+
 
 
 
@@ -34,7 +42,7 @@ form1.addEventListener("submit",function(event){
 })
 
 
-function addObj(){
+function addObj(todo){
     const task = {};
     task.input = input.value;
     task.priority = priority.options[priority.selectedIndex].textContent;
@@ -63,7 +71,6 @@ function addObj(){
 
 function save(){
     const lists = document.getElementsByClassName("new");
-    let storage = [];
     Array.from(lists).forEach(list => {
         let todo = {
             input: list.querySelector("td:nth-child(1)").innerText,

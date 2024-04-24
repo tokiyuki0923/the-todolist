@@ -9,7 +9,7 @@ const calendar = document.getElementById("calendar");
 const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
-const selects = document.getElementsByClassName("selected");
+const selected = document.getElementsByClassName("selected");
 const allDelete = document.getElementById("allDelete");
 
 // ------------------------------------------------------
@@ -63,9 +63,12 @@ document.addEventListener("click",function(event){
 
 allDelete.addEventListener("click",function(event){
     event.preventDefault();
-    selects.remove();
+    const selects = document.querySelectorAll(".selected");
+    selects.forEach(line =>{
+        line.remove();
+    });
     save();
-})
+});
 
 
 

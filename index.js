@@ -11,7 +11,6 @@ const tr = document.getElementById("tr");
 
 let storage = [];
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const getList = JSON.parse(localStorage.getItem("storage"));
     if (getList) {

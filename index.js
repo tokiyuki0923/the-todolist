@@ -10,13 +10,19 @@ const table = document.getElementById("table");
 const tr = document.getElementById("tr");
 
 
-// ドキュメントが読み込まれるたびに起こる関数。ローカルストレージに何も存在しなかったら何も返さないで次に行く
+// ドキュメントが読み込まれるたびに起こる関数。ローカルストレージに何も存在しなかったら何も返さないで次に行く→これいるか？
 document.addEventListener("DOMContentLoaded",function () {
     const todos = JSON.parse(localStorage.getItem("storage"));
-    if(todos == undefined){
-        return;
+    if(todos != undefined){
+        const container = [];
+        for(todos of container){
+            console.log(container);
+        }
+    
     }
+    
 })
+
 
 
 

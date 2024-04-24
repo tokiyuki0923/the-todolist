@@ -42,6 +42,7 @@ function addObj(){
     task.check = false;
     const trs = document.createElement("tr");
     table.appendChild(trs);
+    trs.classList.add("new");
     for (const key in task) {
         const td = document.createElement("td");
         if (key == "check") { 
@@ -61,8 +62,9 @@ function addObj(){
 
 
 function save(){
-    const lists = document.querySelectorAll("td");
-    lists.forEach(list => {
+    const lists = document.getElementsByClassName("new");
+    let storage = [];
+    Array.from(lists).forEach(list => {
         let todo = {
             text:list.innerText,
         }

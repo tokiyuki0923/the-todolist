@@ -9,9 +9,10 @@ const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
 
+let storage = [];
+
 
 // ドキュメントが読み込まれるたびに起こる関数。ローカルストレージに何も存在しなかったら何も返さないで次に行く→これいるか？
-
 
 
 
@@ -33,7 +34,7 @@ form1.addEventListener("submit",function(event){
 })
 
 
-function addObj(todo){
+function addObj(){
     const task = {};
     task.input = input.value;
     task.priority = priority.options[priority.selectedIndex].textContent;
@@ -61,7 +62,6 @@ function addObj(todo){
 
 function save(){
     const lists = document.querySelectorAll("td");
-    let storage = [];
     lists.forEach(list => {
         let todo = {
             text:list.innerText,

@@ -22,12 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-
-
 register.addEventListener("click",function(event){
     event.preventDefault();
     addObj();
@@ -44,16 +38,25 @@ form1.addEventListener("submit",function(event){
 
 function addObj(todo){
     const task = {};
-    task.input = input.value;
-    task.priority = priority.options[priority.selectedIndex].textContent;
-    task.limit = calendar.value;
-    task.check = false;
+    if (todo) {
+        task.input = todo.input;
+        task.priority = todo.priority;
+        task.limit = todo.limit;
+        task.check = todo.check;
+    } else {
+        task.input = input.value;
+        task.priority = priority.options[priority.selectedIndex].textContent;
+        task.limit = calendar.value;
+        task.check = false;
+    }
     const trs = document.createElement("tr");
     table.appendChild(trs);
     trs.classList.add("new");
+
+
     for (const key in task) {
         const td = document.createElement("td");
-        if (key == "check") { 
+        if (key === "check") { 
             const checkbox = document.createElement("input");
             checkbox.setAttribute("type","checkbox");
             td.appendChild(checkbox); 
@@ -62,15 +65,18 @@ function addObj(todo){
             }
         trs.appendChild(td);
         }
-    input.value = "";
-    priority.value = "high";
-    calendar.value = "";
+        if (!todo) {
+            input.value = "";
+            priority.value = "high";
+            calendar.value = "";
+        }
 }
 
 
 
 function save(){
     const lists = document.getElementsByClassName("new");
+    storage =[];
     Array.from(lists).forEach(list => {
         let todo = {
             input: list.querySelector("td:nth-child(1)").innerText,

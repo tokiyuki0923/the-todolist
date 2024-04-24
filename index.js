@@ -2,12 +2,23 @@
 
 // それぞれ必要な情報を取得
 const form1 = document.getElementById("form1");
+const form2 = document.getElementById("form2");
 const input = document.getElementById("input");
 const priority = document.getElementById("priority");
 const calendar = document.getElementById("calendar");
 const register = document.getElementById("register");
 const table = document.getElementById("table"); 
 const tr = document.getElementById("tr");
+const selects = document.getElementsByClassName("selected");
+const allDelete = document.getElementById("allDelete");
+
+// ------------------------------------------------------
+const hako = document.getElementsByClassName("hako");
+// const line = hako.closest(".new");
+// ------------------------------------------------------
+
+
+
 
 let storage = [];
 
@@ -35,6 +46,34 @@ form1.addEventListener("submit",function(event){
 })
 
 
+
+
+
+
+document.addEventListener("click",function(event){
+    if(event.target.matches(".hako")){
+        const evetage = event.target;
+        const pevetage = evetage.parentElement;
+        const ppevetage = pevetage.parentElement;
+        ppevetage.classList.toggle("selected");
+    }
+})
+
+
+
+allDelete.addEventListener("click",function(event){
+    event.preventDefault();
+    selects.remove();
+    save();
+})
+
+
+
+
+
+
+
+
 function addObj(todo){
     const task = {};
     if (todo) {
@@ -58,6 +97,7 @@ function addObj(todo){
         if (key === "check") { 
             const checkbox = document.createElement("input");
             checkbox.setAttribute("type","checkbox");
+            checkbox.classList.add("hako");
             td.appendChild(checkbox); 
             } else {
             td.textContent = task[key];
@@ -70,7 +110,6 @@ function addObj(todo){
             calendar.value = "";
         }
 }
-
 
 
 function save(){
@@ -87,6 +126,10 @@ function save(){
     });
     localStorage.setItem("storage",JSON.stringify(storage));
 }
+
+
+
+
 
 
 

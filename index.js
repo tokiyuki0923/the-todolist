@@ -36,7 +36,6 @@ form1.addEventListener("submit",function(event){
 
 function addObj(){
     const task = {};
-    task.classList.add("object");
     task.input = input.value;
     task.priority = priority.options[priority.selectedIndex].textContent;
     task.limit = calendar.value;
@@ -67,7 +66,10 @@ function save(){
     let storage = [];
     Array.from(lists).forEach(list => {
         let todo = {
-            text:list.innerText,
+            input: list.querySelector("td:nth-child(1)").innerText,
+            priority: list.querySelector("td:nth-child(2)").innerText,
+            limit: list.querySelector("td:nth-child(3)").innerText,
+            check: list.querySelector("td:nth-child(4) input").checked
         }
         storage.push(todo);
     });

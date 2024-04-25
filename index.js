@@ -30,12 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-register.addEventListener("input",write);
-calendar.addEventListener("change",write);
-
-
+/* register.addEventListener("input",write);
+calendar.addEventListener("change",write); */
 
 register.addEventListener("click",function(event){
+    if(input.value === ""||calendar.value === ""){
+        return;
+    }
     event.preventDefault();
     addObj();
     save();
@@ -135,7 +136,7 @@ function save(){
 
 
 
-function write (){
+/* function write (){
     const isRequired = input.checkValidity();
     const areRequired = calendar.checkValidity();
 
@@ -144,7 +145,7 @@ function write (){
         return;
     }
 
-}
+} */
 
 
 

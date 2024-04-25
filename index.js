@@ -99,6 +99,9 @@ function addObj(todo){
 
     for (const key in task) {
         const td = document.createElement("td");
+        if (key === "input" || key === "priority" || key === "limit") { 
+            td.classList.add("canEdit");
+        }
         if (key === "check") { 
             const checkbox = document.createElement("input");
             checkbox.setAttribute("type","checkbox");
@@ -114,6 +117,8 @@ function addObj(todo){
         priority.value = "high";
         calendar.value = "";
     }
+
+
 
     const editButton = document.createElement("button");
     editButton.textContent = "編集";
@@ -140,7 +145,56 @@ function save(){
 }
 
 
+let editing = false;
 
+document.addEventListener("click", function(event) {
+    if (!editing && event.target.matches(".editBtn")) {
+        editing = true;
+
+        const tr = event.target.closest("tr");
+        const tds = tr.querySelectorAll("td.canEdit");
+
+        tds.forEach(td => {
+            const oldValue = td.textContent.trim();
+            const input = document.createElement("input");
+            input.value = oldValue;
+            td.textContent = '';
+            td.appendChild(input);
+        });
+
+        const finishEditButton = document.createElement("button");
+        finishEditButton.textContent = "完了";
+        finishEditButton.classList.add("finishEditBtn");
+        const editTd = document.createElement("td");
+        editTd.appendChild(finishEditButton);
+        tr.appendChild(editTd);
+
+        const editButtons = document.querySelectorAll(".editBtn");
+        editButtons.forEach(button => {
+            button.disabled = true;
+        });
+    }
+
+    if (event.target.matches(".finishEditBtn")) {
+        editing = false; 
+
+        const tr = event.target.closest("tr"); 
+        const tds = tr.querySelectorAll("td.canEdit");
+
+        tds.forEach(td => {
+            const newValue = td.querySelector("input").value.trim();
+            td.textContent = newValue;
+        });
+
+        event.target.parentElement.remove();
+        save(); 
+
+        const editButtons = document.querySelectorAll(".editBtn");
+        editButtons.forEach(button => {
+            button.disabled = false;
+        });
+    }
+});
 
 /* function write (){
     const isRequired = input.checkValidity();

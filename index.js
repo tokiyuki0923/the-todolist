@@ -17,9 +17,13 @@ const hako = document.getElementsByClassName("hako");
 
 
 
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+let storage = [];      //ストレージに配列としてオブジェクトを保存するための、空の配列を定義
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-let storage = [];
 
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 document.addEventListener('DOMContentLoaded', () => {
     const getList = JSON.parse(localStorage.getItem("storage"));
     if (getList) {
@@ -28,11 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
-/* register.addEventListener("input",write);
-calendar.addEventListener("change",write); */
 
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 register.addEventListener("click",function(event){
     if(input.value.trim() === ""||calendar.value.trim() === ""){
         return;
@@ -41,8 +45,11 @@ register.addEventListener("click",function(event){
     addObj();
     save();
 })
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 form1.addEventListener("submit",function(event){
     event.preventDefault();
     if(input.value.trim() === ""||calendar.value.trim() === ""){
@@ -51,10 +58,11 @@ form1.addEventListener("submit",function(event){
     addObj();
     save();
 })
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
-
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 document.addEventListener("click",function(event){
     if(event.target.matches(".hako")){
         const evetage = event.target;
@@ -63,9 +71,12 @@ document.addEventListener("click",function(event){
         ppevetage.classList.toggle("selected");
     }
 })
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 allDelete.addEventListener("click",function(event){
     event.preventDefault();
     const selects = document.querySelectorAll(".selected");
@@ -74,11 +85,11 @@ allDelete.addEventListener("click",function(event){
     });
     save();
 });
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
-
-
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 function addObj(todo){
     const task = {};
     if (todo) {
@@ -127,8 +138,11 @@ function addObj(todo){
     editTd.appendChild(editButton);
     trs.appendChild(editTd);
 }
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 function save(){
     const lists = document.getElementsByClassName("new");
     storage =[];
@@ -143,10 +157,17 @@ function save(){
     });
     localStorage.setItem("storage",JSON.stringify(storage));
 }
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 let editing = false;
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 document.addEventListener("click", function(event) {
     if (!editing && event.target.matches(".editBtn")) {
         editing = true;
@@ -195,29 +216,7 @@ document.addEventListener("click", function(event) {
         });
     }
 });
-
-/* function write (){
-    const isRequired = input.checkValidity();
-    const areRequired = calendar.checkValidity();
-
-    if(isRequired&&areRequired){
-        register.disabled = false;
-        return;
-    }
-
-} */
-
-
-
-
-
-
-
-
-
-
-/* const value = task[key];
-console.log(`key:${key}, value:${value}`); */
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
@@ -229,36 +228,8 @@ console.log(`key:${key}, value:${value}`); */
 
 
 
-
-
-
-
-
-
-
-
-/* // 登録ボタンがクリックされた時に発動する関数
-register.addEventListener("click",function (event){
-    event.preventDefault();
-    addText();
-    addPriority();
-    addDate();
-    addCheck();
-    addTr();
-    save();
-});
-// Enterが押された時に発動する関数
-form1.addEventListener("submit",function(event){
-    event.preventDefault();
-    addText();
-    addPriority();
-    addDate();
-    addCheck();
-    addTr();
-    save();
-
-}); */
 /* 
+ぜーーーーんぶ自分で書いたコード。なんだかんだ役に立った。いつかこのコードゴミだなとか思えますように。
 function addTr(){
     const trs = document.createElement("tr");
     table.appendChild(trs);

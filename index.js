@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 calendar.addEventListener("change",write); */
 
 register.addEventListener("click",function(event){
-    if(input.value === ""||calendar.value === ""){
+    if(input.value.trim() === ""||calendar.value.trim() === ""){
         return;
     }
     event.preventDefault();
@@ -45,6 +45,9 @@ register.addEventListener("click",function(event){
 
 form1.addEventListener("submit",function(event){
     event.preventDefault();
+    if(input.value.trim() === ""||calendar.value.trim() === ""){
+        return;
+    }
     addObj();
     save();
 })

@@ -62,6 +62,7 @@ th{
 }
 
 td{
+    height: 50px;
     border: solid 1px #777;
     margin: auto;
     text-align: center;
@@ -86,8 +87,27 @@ td{
 }
 
 .no5{
-    width: 50px;
+    width: 70px;
 }
+
+.editBtn{
+    border-radius: 10px;
+    height: 30px;
+    width: 40px;
+    background-color: aquamarine;
+    border: aquamarine;
+}
+
+.editBtn:hover{
+    background-color: rgb(7, 136, 93);
+    cursor: pointer;
+}
+
+.editBtn:active{
+    background-color: blue;
+}
+
+
 
 #allDelete{
     background: blue;

@@ -112,11 +112,18 @@ function addObj(todo){
             }
         trs.appendChild(td);
         }
-        if (!todo) {
-            input.value = "";
-            priority.value = "high";
-            calendar.value = "";
-        }
+    if (!todo) {
+        input.value = "";
+        priority.value = "high";
+        calendar.value = "";
+    }
+
+    const editButton = document.createElement("button");
+    editButton.textContent = "編集";
+    editButton.classList.add("editBtn");
+    const editTd = document.createElement("td");
+    editTd.appendChild(editButton);
+    trs.appendChild(editTd);
 }
 
 

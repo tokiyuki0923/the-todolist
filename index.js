@@ -11,11 +11,9 @@ const table = document.getElementById("table");
 const tr = document.getElementById("tr");
 const selected = document.getElementsByClassName("selected");
 const allDelete = document.getElementById("allDelete");
-
-// ------------------------------------------------------
 const hako = document.getElementsByClassName("hako");
-// const line = hako.closest(".new");
-// ------------------------------------------------------
+
+
 
 
 
@@ -30,6 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+register.addEventListener("input",write);
+calendar.addEventListener("change",write);
+
+
+
+
+
+
+
+
+
 
 
 register.addEventListener("click",function(event){
@@ -132,7 +143,16 @@ function save(){
 
 
 
+function write (){
+    const isRequired = input.checkValidity();
+    const areRequired = calendar.checkValidity();
 
+    if(isRequired&&areRequired){
+        register.disabled = false;
+        return;
+    }
+
+}
 
 
 

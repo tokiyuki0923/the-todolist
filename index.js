@@ -35,14 +35,6 @@ calendar.addEventListener("change",write);
 
 
 
-
-
-
-
-
-
-
-
 register.addEventListener("click",function(event){
     event.preventDefault();
     addObj();

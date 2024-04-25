@@ -55,8 +55,6 @@ form1.addEventListener("submit",function(event){
 
 
 
-
-
 document.addEventListener("click",function(event){
     if(event.target.matches(".hako")){
         const evetage = event.target;

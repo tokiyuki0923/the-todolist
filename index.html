@@ -9,38 +9,39 @@
 <body>
     <div class="section1">
         <p>TODO：</p>
-        <form><input placeholder="今日やることは？"></form>
+        <form id="form1"><input id="input" placeholder="今日やることは？"></form>
     </div>
     <div class="section2">
         <div class="left">
             <p>優先度：</p>
-            <form>
-                <select name="priority">
+                <select id="priority" name="priority">
                     <option value="high">高</option>
                     <option value="common">中</option>
                     <option value="low">低</option>
                 </select>
-            </form>
         </div>
         <div class="right">
             <p>期日：</p>
-            <form><input id="calendar" type="date" class="calendar"></form>
+            <form id="form2"><input id="calendar" type="date" class="calendar"></form>
         </div>
     </div>
     <div class="section3">
         <button id="register">登録</button>
     </div>
     <div class="section4">
-        <table>
-            <tr>
+        <table id="table">
+            <tr id = "tr">
                 <th class="head no1">TODO</th>
                 <th class="head no2">優先度</th>
                 <th class="head no3">期日</th>
                 <th class="head no4">完了</th>
+                <th class="head no5">編集</th>
             </tr>
         </table>
     </div>
-
+    <div class="section5">
+        <button id="allDelete">削除</button>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

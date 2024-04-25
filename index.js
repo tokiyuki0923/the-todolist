@@ -79,9 +79,6 @@ allDelete.addEventListener("click",function(event){
 
 
 
-
-
-
 function addObj(todo){
     const task = {};
     if (todo) {
@@ -141,6 +138,7 @@ function save(){
     });
     localStorage.setItem("storage",JSON.stringify(storage));
 }
+
 
 
 

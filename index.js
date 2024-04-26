@@ -24,11 +24,11 @@ let storage = [];      //ストレージに配列としてオブジェクトを�
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-document.addEventListener('DOMContentLoaded', () => {
-    const getList = JSON.parse(localStorage.getItem("storage"));
-    if (getList) {
-        getList.forEach(todo => {
-            addObj(todo);
+document.addEventListener('DOMContentLoaded', () => {            //DOMが読み込まれるたびに発動する関数
+    const getList = JSON.parse(localStorage.getItem("storage")); //ストレージに文字列として保存してあるオブジェクトを解凍して、配列に戻す
+    if (getList) {                                               //もしストレージにアイテムがあれば起こる関数（というより、解凍されれば発動する関数かな。解凍されなければ、この関数は発動しない）
+        getList.forEach(todo => {                                //ストレージに存在したオブジェクトをそれぞれ取り出し、それぞれをtodoという変数に入れてaddObj関数を適用される
+            addObj(todo);                                        //😅不安な点として、forEachは変数を定義してそれぞれをその変数名として関数を実行しているのか？という点。日本語難しすぎる。
         });
     }
 });
@@ -37,38 +37,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-register.addEventListener("click",function(event){
-    if(input.value.trim() === ""||calendar.value.trim() === ""){
-        return;
+register.addEventListener("click",function(event){               //登録ボタンがクリックされるたびに発動する関数
+    if(input.value.trim() === ""||calendar.value.trim() === ""){ //もしタスク名入力欄が空欄だった場合それか、期日入力欄が空欄だった場合、
+        return;                                                  //「何もしない」を返す。つまり登録ボタン押しても何も起こらない。そしてそれ以降の関数は実行されない。
     }
-    event.preventDefault();
-    addObj();
-    save();
+    event.preventDefault();                                      //クリックしたら普通はリロードされて表示されるがそれを止める
+    addObj();                                                    //addObj関数を実行
+    save();                                                      //save関数を実行
 })
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-form1.addEventListener("submit",function(event){
-    event.preventDefault();
-    if(input.value.trim() === ""||calendar.value.trim() === ""){
-        return;
+form1.addEventListener("submit",function(event){                 //タスク入力欄でEnterを押される度起こる関数
+    event.preventDefault();                                      //普通なら起こるリロードを止める
+    if(input.value.trim() === ""||calendar.value.trim() === ""){ //もし、タスク名入力欄が空欄だった場合それか、期日入力欄が空欄だった場合、
+        return;                                                  //「何もしない」を返す。つまり登録ボタン押しても何も起こらない。そしてそれ以降の関数は実行されない。
     }
-    addObj();
-    save();
+    addObj();                                                    //addObj関数を実行
+    save();                                                      //save関数を実行
 })
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-document.addEventListener("click",function(event){
-    if(event.target.matches(".hako")){
-        const evetage = event.target;
-        const pevetage = evetage.parentElement;
-        const ppevetage = pevetage.parentElement;
-        ppevetage.classList.toggle("selected");
+document.addEventListener("click",function(event){               //HTML要素がクリックされるたびに発動する関数
+    if(event.target.matches(".hako")){                           //もしクリックされた要素がクラス名"hako"を持っていた場合、以下の関数を実行する
+        const evetage = event.target;                            //クリックされた要素をevetageという変数に格納（今回の場合はinputタグ）
+        const pevetage = evetage.parentElement;                  //チェックボックスの親要素（今回の場合はtdタグ）をpevetageという変数に格納する
+        const ppevetage = pevetage.parentElement;                //tdタグの親要素（今回の場合はtrタグ）をppevetageという変数に格納
+        ppevetage.classList.toggle("selected");                  //チェックボックス（inputタグ）がクリックされるたびに、その先祖要素であるtrタグにselectedクラスが付与されたり外されたりする
     }
 })
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -77,103 +77,103 @@ document.addEventListener("click",function(event){
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-allDelete.addEventListener("click",function(event){
-    event.preventDefault();
-    const selects = document.querySelectorAll(".selected");
-    selects.forEach(line =>{
-        line.remove();
+allDelete.addEventListener("click",function(event){              //HTML要素がクリックされるたびに発動する関数
+    event.preventDefault();                                      //普通なら起こるリロードを止める
+    const selects = document.querySelectorAll(".selected");      //selectedクラスがついている要素を全て持ってきてselectsという変数に格納する
+    selects.forEach(line =>{                                     //selectsの中に入っているそれぞれのtrタグをそれぞれlineという変数に入れて以下の関数を実行する
+        line.remove();                                           //line変数に入っているものを取り除く
     });
-    save();
+    save();                                                      //save関数を実行する
 });
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-function addObj(todo){
-    const task = {};
-    if (todo) {
-        task.input = todo.input;
-        task.priority = todo.priority;
-        task.limit = todo.limit;
-        task.check = todo.check;
-    } else {
-        task.input = input.value;
-        task.priority = priority.options[priority.selectedIndex].textContent;
-        task.limit = calendar.value;
-        task.check = false;
+function addObj(todo){                                           //addObjという関数を定義する（todoという変数に対して以下を実行することもある）
+    const task = {};                                             //taskという空のオブジェクトを定義する
+    if (todo) {                                                  //もしtodo（ストレージに入っていたアイテム）があれば以下を実行する
+        task.input = todo.input;                                 //taskの中身のinputプロパティを定義し、それはtodoのinputプロパティと同じとする
+        task.priority = todo.priority;                           //taskの中身のproiorityプロパティを定義し、それはtodoのpriorityプロパティと同じとする
+        task.limit = todo.limit;                                 //taskの中身のlimitプロパティを定義し、それはtodoのlimitプロパティと同じとする
+        task.check = todo.check;                                 //taskの中身のcheckプロパティを定義し、それはtodoのcheckプロパティと同じとする
+    } else {                                                     //もしtodo（ストレージに入っていたアイテム）がなければ以下を実行する
+        task.input = input.value;                                //taskの中身のinputプロパティを定義し、それはinputタグに書いてあるものと同じとする
+        task.priority = priority.options[priority.selectedIndex].textContent;//taskの中身のproiorityプロパティを定義し、それはpriorityの現在選ばれているテキスト内容と同じとする
+        task.limit = calendar.value;                             //taskの中身のlimitプロパティを定義し、それはcalendarに書いてあるものと同じとする
+        task.check = false;                                      //taskの中身のcheckプロパティを定義し、それはfalseとする
     }
-    const trs = document.createElement("tr");
-    table.appendChild(trs);
-    trs.classList.add("new");
+    const trs = document.createElement("tr");                    //HTMLにtrタグを作るという合図をtrsとする
+    table.appendChild(trs);                                      //tableタグの子要素にtrs（trタグ）を作成する
+    trs.classList.add("new");                                    //作成したtrタグにクラスnewを付与する
 
 
-    for (const key in task) {
-        const td = document.createElement("td");
-        if (key === "input" || key === "priority" || key === "limit") { 
-            td.classList.add("canEdit");
+    for (const key in task) {                                    //taskの中のプロパティ達をkeyと定義し、以下の関数を繰り返す
+        const td = document.createElement("td");                 //HTMLにtdタグを作成する合図をtdとする
+        if (key === "input" || key === "priority" || key === "limit") { //もしkey(プロパティ名)がinputか、priorityか、limitであるならば以下を実行する
+            td.classList.add("canEdit");                         //作成したtdにクラス（canEdit）を与える
         }
-        if (key === "check") { 
-            const checkbox = document.createElement("input");
-            checkbox.setAttribute("type","checkbox");
-            checkbox.classList.add("hako");
-            td.appendChild(checkbox); 
-            } else {
-            td.textContent = task[key];
+        if (key === "check") {                                   //もしkey（プロパティ名）がcheckならば以下を実行する
+            const checkbox = document.createElement("input");    //HTMLにinputタグを作る合図をcheckboxとする
+            checkbox.setAttribute("type","checkbox");            //checkboxにtype属性checkboxを与える（これによってただのinputタグがcheckboxになる）
+            checkbox.classList.add("hako");                      //checkboxにhakoというクラスを与える
+            td.appendChild(checkbox);                            //ここで初めてtdタグの中にcheckbox（inputタグ）を作成する
+            } else {                                             //もしkey（プロパティ名）がcheckではなかったら
+            td.textContent = task[key];                          //tdタグの中身のテキストをtask[key]とする（つまり、input、priority、limitであり、それらはテキスト内容を持っている）
             }
-        trs.appendChild(td);
+        trs.appendChild(td);                                     //trタグの中身にtdタグを作成する
         }
-    if (!todo) {
-        input.value = "";
-        priority.value = "high";
-        calendar.value = "";
+    if (!todo) {                                                 //もし、todoが存在しなかったら（ストレージに何もなかったら）
+        input.value = "";                                        //inputタグの中身を空にする
+        priority.value = "high"                                  //priorityタグの中身をhighにする（highに割り当てているのは「高」）
+        calendar.value = "";                                     //calendarの中身を空にする
     }
 
 
 
-    const editButton = document.createElement("button");
-    editButton.textContent = "編集";
-    editButton.classList.add("editBtn");
-    const editTd = document.createElement("td");
-    editTd.appendChild(editButton);
-    trs.appendChild(editTd);
+    const editButton = document.createElement("button");         //HTML要素にbutton要素を作成する合図をeditButtonとする
+    editButton.textContent = "編集";                              //ボタンの中のテキスト内容を「編集」とする
+    editButton.classList.add("editBtn");                         //編集ボタンにeditButtonというクラスを与える
+    const editTd = document.createElement("td");                 //HTMLにtdタグを作成する合図をeditTdとする
+    editTd.appendChild(editButton);                              //editTdタグの中ににeditButtonを作成する
+    trs.appendChild(editTd);                                     //trタグの中にeditTdを作成する
 }
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-function save(){
-    const lists = document.getElementsByClassName("new");
-    storage =[];
-    Array.from(lists).forEach(list => {
-        let todo = {
-            input: list.querySelector("td:nth-child(1)").innerText,
-            priority: list.querySelector("td:nth-child(2)").innerText,
-            limit: list.querySelector("td:nth-child(3)").innerText,
-            check: list.querySelector("td:nth-child(4) input").checked
+function save(){                                                 //save関数の中身を以下のとおりとする
+    const lists = document.getElementsByClassName("new");        //newというクラス名を持ったもの達を取得してきてlistsという変数に格納する
+    storage =[];                                                 //storageという空の配列を用意する
+    Array.from(lists).forEach(list => {                          //listsを第二引数に引き渡し（今回の場合はforEachの引数に引き渡し）、それの中身をlistと定義しそれぞれに以下の関数を実行する
+        let todo = {                                             //todoというオブジェクトを用意する
+            input: list.querySelector("td:nth-child(1)").innerText,//input:listの一つ目のテキスト内容とする
+            priority: list.querySelector("td:nth-child(2)").innerText,//priority:listの二つ目のテキスト内容とする
+            limit: list.querySelector("td:nth-child(3)").innerText,//limit:listの三つ目のテキスト内容とする
+            check: list.querySelector("td:nth-child(4) input").checked//check:listの四つ目がチェックされているかどうかを調べチェックされていたらtrue、されていなかったらfalseとする
         }
-        storage.push(todo);
+        storage.push(todo);                                      //todo（四つのlistを持っているオブジェクト）をstorageという空の配列に入れる
     });
-    localStorage.setItem("storage",JSON.stringify(storage));
+    localStorage.setItem("storage",JSON.stringify(storage));     //ローカルストレージにstorageの中身を文字列に変更してセットする
 }
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-let editing = false;
+let editing = false;                                             //editingという変数はfalseとする
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-document.addEventListener("click", function(event) {
-    if (!editing && event.target.matches(".editBtn")) {
-        editing = true;
+document.addEventListener("click", function(event) {             //HTML要素がクリックされるたびに以下のコードを実行する
+    if (!editing && event.target.matches(".editBtn")) {          //もし、クリックされたものがクラスeditBtnで且つfalseではなかった場合、以下のコードを実行する
+        editing = true;                                          //editingという変数はtrueとする
 
-        const tr = event.target.closest("tr");
-        const tds = tr.querySelectorAll("td.canEdit");
+        const tr = event.target.closest("tr");                   //
+        const tds = tr.querySelectorAll("td.canEdit");           //
 
         tds.forEach(td => {
             const oldValue = td.textContent.trim();

@@ -175,44 +175,44 @@ document.addEventListener("click", function(event) {             //HTML要素が
         const tr = event.target.closest("tr");                   //
         const tds = tr.querySelectorAll("td.canEdit");           //
 
-        tds.forEach(td => {
-            const oldValue = td.textContent.trim();
-            const input = document.createElement("input");
-            input.value = oldValue;
-            td.textContent = '';
-            td.appendChild(input);
+        tds.forEach(td => {                                      //
+            const oldValue = td.textContent.trim();              //
+            const input = document.createElement("input");       //
+            input.value = oldValue;                              //
+            td.textContent = '';                                 //
+            td.appendChild(input);                               //
         });
 
-        const finishEditButton = document.createElement("button");
-        finishEditButton.textContent = "完了";
-        finishEditButton.classList.add("finishEditBtn");
-        const editTd = document.createElement("td");
-        editTd.appendChild(finishEditButton);
-        tr.appendChild(editTd);
+        const finishEditButton = document.createElement("button");//
+        finishEditButton.textContent = "完了";                    //
+        finishEditButton.classList.add("finishEditBtn");         //
+        const editTd = document.createElement("td");             //
+        editTd.appendChild(finishEditButton);                    //
+        tr.appendChild(editTd);                                  //
 
-        const editButtons = document.querySelectorAll(".editBtn");
-        editButtons.forEach(button => {
-            button.disabled = true;
+        const editButtons = document.querySelectorAll(".editBtn");//
+        editButtons.forEach(button => {                          //
+            button.disabled = true;                              //
         });
     }
 
-    if (event.target.matches(".finishEditBtn")) {
-        editing = false; 
+    if (event.target.matches(".finishEditBtn")) {                //
+        editing = false;                                         //
 
-        const tr = event.target.closest("tr"); 
-        const tds = tr.querySelectorAll("td.canEdit");
+        const tr = event.target.closest("tr");                   //
+        const tds = tr.querySelectorAll("td.canEdit");           //
 
-        tds.forEach(td => {
-            const newValue = td.querySelector("input").value.trim();
-            td.textContent = newValue;
+        tds.forEach(td => {                                      //
+            const newValue = td.querySelector("input").value.trim();//
+            td.textContent = newValue;                           //
         });
 
-        event.target.parentElement.remove();
-        save(); 
+        event.target.parentElement.remove();                     //
+        save();                                                  //
 
-        const editButtons = document.querySelectorAll(".editBtn");
-        editButtons.forEach(button => {
-            button.disabled = false;
+        const editButtons = document.querySelectorAll(".editBtn");//
+        editButtons.forEach(button => {                          //
+            button.disabled = false;                             //
         });
     }
 });

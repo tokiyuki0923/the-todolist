@@ -226,8 +226,6 @@ document.addEventListener("click", function(event) {             //HTML要素が
 
 
 
-
-
 /* 
 ぜーーーーんぶ自分で書いたコード。なんだかんだ役に立った。いつかこのコードゴミだなとか思えますように。
 function addTr(){
